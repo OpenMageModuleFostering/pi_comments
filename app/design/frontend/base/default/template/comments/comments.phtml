@@ -1,0 +1,58 @@
+<table class="data-table">
+    <colgroup>
+        <col width="100px"/>
+        <col/>
+    </colgroup>
+    
+    <thead>
+        <tr>
+            <td colspan="2"> <h1 class="left"><?php echo $this->__('Customer Comments')?></h1></td>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <?php
+        $model = Mage::getModel('comments/commentss');
+        $collection = $model->getCollection()
+                ->addFieldToFilter('status', 1);
+        $data = $collection->getData();
+        foreach ($data as $row):
+        ?>
+            <tr>
+                <td>
+                    <?php echo '<img class="img-responsive img-circle" width="70" src="' . Mage::getBaseUrl('media') . $row["picture"] . '"/>'; ?>
+                </td>                    
+                <td>
+                    
+                    <dl>
+                        <dt><?php $string = $row["comments"]; ?></dt>
+                        <dd><?php
+                                $string = strip_tags($string);
+
+                                if (strlen($string) > 175) {
+                                    $stringCut = substr($string, 0, 175);
+                                    $string = substr($stringCut, 0, strrpos($stringCut, ' ')) . '..<a class="read-more" href="' . $this->getUrl('comments/detail/index', array('id' => $row["id"])) . '">Read More</a>';
+                                }
+                                echo $string;
+                                ?></dd>
+                    </dl>
+                    <h4 class="right">- <?php echo $row["customer_name"]; ?></h4>
+                    
+                    
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody> 
+    
+    <tfoot>
+        <tr>
+            <td colspan="2">
+                <button  class="button right"  title="<?php echo $this->__('Add comments') ?>" type="button" 
+             onclick="setLocation('<?php echo $this->getUrl('comments/index/index'); ?>')">
+                    <span><span><?php echo $this->__('Add comments') ?></span></span>
+                </button>
+            </td>
+        </tr>
+    </tfoot>    
+
+</table>

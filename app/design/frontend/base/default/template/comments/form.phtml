@@ -1,0 +1,118 @@
+
+
+<div class="account-create testi">
+    <div class="page-title">
+        <h1><?php echo $this->__('Post your Comments'); ?></h1>
+    </div>
+    <form  action="<?php echo $this->getUrl('comments/index/save'); ?>" method="post" id="form-validate" class="scaffold-form" enctype="multipart/form-data">
+        <div class="fieldset">
+			<?php echo $this->getBlockHtml('formkey')?>
+            <input type="hidden" name="success_url" value="">
+            <input type="hidden" name="error_url" value="">
+            <p class="form-instructions"><?php echo $this->__('Please enter the following information to post your Comments.'); ?></p>
+            <p class="required"><?php echo $this->__('* Required Fields'); ?></p>
+            <ul class="form-list">
+
+
+            <?php
+            $email="";
+            $first="";
+            $middle="";
+            $last="";
+            if (Mage::getSingleton("customer/session")->isLoggedIn()):
+            $customer = Mage::getSingleton("customer/session")->getCustomer();
+            $email = $customer->getEmail();
+            $first = $customer->getFirstname();
+            $middle = $customer->getMiddlename();
+            $last = $customer->getLastname(); 
+            endif;
+            
+        
+            ?>
+
+                <input type="hidden" id="status" name="status" value="2">
+                <li>
+                    <label for="email_address" class="required"><em>*</em>
+
+                        <?php echo $this->__('Customer Email Address'); ?>
+                    </label>
+                    <div class="input-box">
+                        <input type="email" value="<?php echo $email; ?>" autocapitalize="off" autocorrect="off" spellcheck="false" name="customer_email" id="email_address" value="" title="Email Address" class="input-text validate-email required-entry">
+                    </div>
+                </li>
+
+
+                <li class="fields">
+                    <div class="customer-name">
+                        <div class="field name-firstname">
+                            <label for="firstname" class="required"><em>*</em>
+                                <?php echo $this->__('Customer Name'); ?>
+                            </label>
+                            <div class="input-box">
+                                <input type="text" id="name" name="customer_name" value="<?php echo $first; ?> <?php echo $last; ?>" title="Name" maxlength="255" class="input-text required-entry">
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+                <li class="fields">
+                    <div class="customer-name">
+                        <div class="field name-firstname">
+                            <label for="name" class="required"><em>*</em>
+                                <?php echo $this->__('Comments'); ?></label>
+                            <div class="input-box">
+                            <textarea class="input-text required-entry" cols="10" name="comments" rows="3"></textarea>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </li>
+                <li class="fields">
+                    <div class="customer-name">
+                        <div class="field name-firstname">
+                            <label for="firstname" class="required"><em>*</em>
+                                <?php echo $this->__('Picture'); ?>
+                            </label>
+                            <div class="input-box">
+
+                                <input type="file" name="picture" class="required-entry"/>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+
+                    </div>
+                </li>
+
+
+            </ul>
+
+
+        </div>
+        <div class="buttons-set">
+
+            <button style="float:left;" type="submit" title="Register" class="button"><span><span><?php echo $this->__('Submit'); ?>
+                    </span></span></button>
+        </div>
+
+        <div class="buttons-set">
+            <p class="back-link"><a href="<?php echo Mage::helper('core/url')->getHomeUrl(); ?>" class="back-link"><small>« </small><?php echo $this->__('Back to home'); ?></a></p>
+
+        </div>
+    </form>
+   <script type="text/javascript">
+    //<![CDATA[
+        var dataForm = new VarienForm('form-validate', true);
+        <?php //if($this->getShowAddressFields()): ?>
+        new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+        <?php //endif; ?>
+    //]]>
+    </script>
+</div>

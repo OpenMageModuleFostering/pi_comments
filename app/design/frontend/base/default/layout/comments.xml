@@ -1,0 +1,22 @@
+<layout>
+   <comments_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="myform" template="comments/form.phtml"/>
+        </reference>
+    </comments_index_index>
+		<comments_detail_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="detailtest" template="comments/detail.phtml"/>
+        </reference>
+    </comments_detail_index>
+</layout>
