@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/PI_Comments",
+    "name": "OpenMageModuleFostering\/PI_Comments",
     "type": "magento-module",
     "license": "Open-Software-License-(OSL)",
     "homepage": "",
     "description": "You can use this extension to comment on website.",
     "authors": [
-    {
-        "name": "pureimagination",
-        "email": "johncarter15oct@gmail.com"
-    }
-],
+        {
+            "name": "pureimagination",
+            "email": "johncarter15oct@gmail.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
