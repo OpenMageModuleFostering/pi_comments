@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/PI_Comments",
+    "name": "openmage-module-fostering\/pi_comments",
     "type": "magento-module",
-    "license": "Open-Software-License-(OSL)",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "You can use this extension to comment on website.",
     "authors": [
